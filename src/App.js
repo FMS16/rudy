@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Banner from './components/Banner';
+import Menu from './components/Menu';
+import Header from './components/Header';
+import Us from './components/Us';
+import { useMediaQuery } from 'react-responsive';
+import Footer from './components/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBurger } from '@fortawesome/free-solid-svg-icons';
+
 
 function App() {
+  const isMobile = useMediaQuery({minWidth: 320, maxWidth:480});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <Banner />
+      <main className='main'>
+        <Menu />
+        <Us />
+      </main>
+      <Footer />
+      {isMobile ? (<button className='btn-order_now_xs'><FontAwesomeIcon icon={faBurger}></FontAwesomeIcon></button>):(
+        <button className='btn-order_now'>ORDENAR</button>
+      )}
     </div>
   );
 }
